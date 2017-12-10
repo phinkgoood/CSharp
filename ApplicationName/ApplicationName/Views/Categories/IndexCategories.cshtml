@@ -1,0 +1,21 @@
+﻿@using ApplicationName.Models
+@{
+    ViewBag.Title = "IndexCategories";
+}
+@model CategoriesModels
+
+<h2>IndexCategories</h2>
+
+<div class="col-xs-4" style="margin-top:20px;">
+    @Html.ActionLink("New category", "AddCategory", null, new { @class = "btn btn-success" })
+</div>
+@foreach (var category in Model.EntityList)
+{
+    
+            <div class="row">
+                <div class="col-xs-8"><h4>@Html.ActionLink(category.Name, "DetailsCategory", new { name = category.Name })</h4></div>
+                <div class="col-xs-2">@Html.ActionLink(" Edit", "EditCategory", new { name = category.Name }, new { @class = "btn btn-default glyphicon glyphicon-pencil" })</div>
+                <div class="col-xs-2"> @Html.ActionLink(" Delete", "DeleteCategory", new { name = category.Name, id = category.ID }, new { @class = "btn btn-danger glyphicon glyphicon-trash" })</div>
+            </div>
+}
+

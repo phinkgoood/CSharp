@@ -1,0 +1,12 @@
+c:\users\f.castellese\documents\visual studio 2015\Projects\ApplicationName\ApplicationName.Classes\bin\Debug\ApplicationName.Classes.dll
+c:\users\f.castellese\documents\visual studio 2015\Projects\ApplicationName\ApplicationName.Classes\bin\Debug\ApplicationName.Classes.pdb
+c:\users\f.castellese\documents\visual studio 2015\Projects\ApplicationName\ApplicationName.Classes\bin\Debug\MongoDB.Bson.dll
+c:\users\f.castellese\documents\visual studio 2015\Projects\ApplicationName\ApplicationName.Classes\bin\Debug\MongoDB.Driver.Core.dll
+c:\users\f.castellese\documents\visual studio 2015\Projects\ApplicationName\ApplicationName.Classes\bin\Debug\MongoDB.Driver.dll
+c:\users\f.castellese\documents\visual studio 2015\Projects\ApplicationName\ApplicationName.Classes\bin\Debug\System.Runtime.InteropServices.RuntimeInformation.dll
+c:\users\f.castellese\documents\visual studio 2015\Projects\ApplicationName\ApplicationName.Classes\bin\Debug\MongoDB.Bson.xml
+c:\users\f.castellese\documents\visual studio 2015\Projects\ApplicationName\ApplicationName.Classes\bin\Debug\MongoDB.Driver.xml
+c:\users\f.castellese\documents\visual studio 2015\Projects\ApplicationName\ApplicationName.Classes\bin\Debug\MongoDB.Driver.Core.xml
+c:\users\f.castellese\documents\visual studio 2015\Projects\ApplicationName\ApplicationName.Classes\obj\Debug\ApplicationName.Classes.csprojResolveAssemblyReference.cache
+c:\users\f.castellese\documents\visual studio 2015\Projects\ApplicationName\ApplicationName.Classes\obj\Debug\ApplicationName.Classes.dll
+c:\users\f.castellese\documents\visual studio 2015\Projects\ApplicationName\ApplicationName.Classes\obj\Debug\ApplicationName.Classes.pdb
