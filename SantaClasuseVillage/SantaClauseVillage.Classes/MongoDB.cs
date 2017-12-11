@@ -1,4 +1,5 @@
-﻿using MongoDB.Driver;
+﻿using MongoDB.Bson;
+using MongoDB.Driver;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,50 +18,77 @@ namespace SantaClauseVillage.Classes
             }
         }
 
-        //methods haven't been implemented yet
         public IEnumerable<Order> GetAllOrders()
         {
-            throw new NotImplementedException();
+            IMongoCollection<Order> orderCollection = database.GetCollection<Order>("order");
+            return orderCollection.Find(new BsonDocument()).SortBy(t => t.RequestDate).ToList();
         }
 
         public IEnumerable<Toy> GetAllToys()
         {
-            throw new NotImplementedException();
+            IMongoCollection<Toy> toyCollection = database.GetCollection<Toy>("toy");
+            return toyCollection.Find(new BsonDocument()).ToList();
         }
 
         public IEnumerable<User> GetAllUsers()
         {
-            throw new NotImplementedException();
+            IMongoCollection<User> userCollection = database.GetCollection<User>("user");
+            return userCollection.Find(new BsonDocument()).ToList();
         }
 
         public Order GetOrderById(string id)
         {
-            throw new NotImplementedException();
+            IMongoCollection<Order> orderCollection = database.GetCollection<Order>("order");
+            return orderCollection.Find(_ => _.ID == id).FirstOrDefault();
         }
 
         public Order GetOrderByKid(string kid)
         {
-            throw new NotImplementedException();
+            IMongoCollection<Order> orderCollection = database.GetCollection<Order>("order");
+            return orderCollection.Find(_ => _.Kid == kid).FirstOrDefault();
+        }
+
+        public bool UpdateOrder(Order order)
+        {
+            {
+                IMongoCollection<Order> categoryCollection = database.GetCollection<Order>("order");
+                var filter = Builders<Order>.Filter.Eq("_id", ObjectId.Parse(order.ID));
+                var update = Builders<Order>.Update
+                    .Set("status", order.Status);
+                try
+                {
+                    categoryCollection.UpdateOne(filter, update);
+                    return true;
+                }
+                catch (Exception)
+                {
+                    return false;
+                }
+            }
         }
 
         public Toy GetToyById(string id)
         {
-            throw new NotImplementedException();
+            IMongoCollection<Toy> toyCollection = database.GetCollection<Toy>("toy");
+            return toyCollection.Find(_ => _.ID == id).FirstOrDefault();
         }
 
         public Toy GetToyByName(string name)
         {
-            throw new NotImplementedException();
+            IMongoCollection<Toy> toyCollection = database.GetCollection<Toy>("toy");
+            return toyCollection.Find(_ => _.Name == name).FirstOrDefault();
         }
 
         public User GetUserById(string id)
         {
-            throw new NotImplementedException();
+            IMongoCollection<User> toyCollection = database.GetCollection<User>("user");
+            return toyCollection.Find(_ => _.ID == id).FirstOrDefault();
         }
 
-        public Order GetUserByScreenname(string screenname)
+        public User GetUserByScreenname(string screenname)
         {
-            throw new NotImplementedException();
+            IMongoCollection<User> toyCollection = database.GetCollection<User>("user");
+            return toyCollection.Find(_ => _.Screenname == screenname).FirstOrDefault();
         }
     }
 }

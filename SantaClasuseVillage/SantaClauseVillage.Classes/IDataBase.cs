@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SantaClauseVillage.Classes
 {
-    interface IDataBase
+    public interface IDataBase
     {
         Toy GetToyById(string id);
         Toy GetToyByName(string name);
@@ -14,10 +14,11 @@ namespace SantaClauseVillage.Classes
 
         Order GetOrderById(string id);
         Order GetOrderByKid(string kid);
+        bool UpdateOrder(Order order);
         IEnumerable<Order> GetAllOrders();
 
         User GetUserById(string id);
-        Order GetUserByScreenname(string screenname);
+        User GetUserByScreenname(string screenname);
         IEnumerable<User> GetAllUsers();
 
     }
