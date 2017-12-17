@@ -1,0 +1,59 @@
+﻿@using SantaClauseVillage.Models
+@{
+    ViewBag.Title = "OrdersList";
+}
+@model OrdersModels 
+
+@if ((string)Session["Screenname"] == "FabulousZiggy" || (string)Session["Screenname"] == "SantaTheBest")
+{
+    <table class="table customTableOrder">
+        <thead class="thead-inverse">
+            <tr>
+                @if ((string)Session["Screenname"] == "FabulousZiggy")
+                {
+                    <th>Request ID</th>
+                }
+                <th>Kid Name</th>
+                <th>Request Status</th>
+                <th>Requested Toys</th>
+                <th>Request Date</th>
+                @if ((string)Session["Screenname"] == "SantaTheBest")
+                {
+                    <th style="width:200px">Total Request Cost</th>
+                }
+                else
+                {
+                    <th>Details</th>
+                }
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var order in Model.EntityList)
+            {
+                <tr>
+                    @if ((string)Session["Screenname"] == "FabulousZiggy")
+                    {
+                        <td>@order.ID</td>
+                    }
+                    <td>@order.Kid</td>
+                    <td>@order.StatusType</td>
+                    <td>
+                        @foreach (var toy in order.Toys)
+                        {
+                            <li>@toy.Name</li>                                              
+                        }
+                    </td>
+                    <td>@order.RequestDate.ToString("dd/MM/yyyy")</td>
+                    @if ((string)Session["Screenname"] == "SantaTheBest")
+                    {
+                        <td>@Html.DisplayName(Model.GetTotalPrice(order.Toys).ToString("F") + " €")</td>
+                    }
+                    else
+                    {
+                        <td class="tdDetail"><button>@Html.ActionLink("Details", "DetailsOrder", new { id = order.ID })</button></td>                
+                    }
+                </tr>
+            }
+        </tbody>
+    </table>
+}

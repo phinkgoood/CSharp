@@ -1,0 +1,39 @@
+﻿@using SantaClauseVillage.Models
+@model SantaClauseVillage.Classes.User
+
+@{
+    ViewBag.Title = "Login";
+}
+
+@using (Html.BeginForm("Home"))
+{
+    <div id="loginbox" class="mainbox col-md-4 col-md-offset-4 col-sm-8 col-sm-offset-2">
+        <div class="panel panel-info">
+            <div class="panel-heading customPanelHeading">
+                <div class="panel-title">Login</div>
+            </div><!--End panel-heading-->
+            <div class="panel-body" style="padding-top:30px">
+                <div class="form-group">
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div class="form-group col-md-10 col-md-offset-1">
+                        @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label" })
+                        <div>
+                            @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", required = "required" } })
+                            @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                        </div><!--End Email-Editor-->
+                    </div> <!--End Email-form-group-->
+                    <div class="form-group col-md-10 col-md-offset-1">
+                        @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label" })
+                        <div>
+                            @Html.EditorFor(model => model.PasswordClearText, new { htmlAttributes = new { @class = "form-control masked", required = "required", type="password"} })
+                            @Html.ValidationMessageFor(model => model.PasswordClearText, "", new { @class = "text-danger" })
+                        </div><!--End Password-Editor-->
+                    </div> <!--End Password-form-group-->
+                    <div class="form-group col-md-10 col-md-offset-1">
+                        <input type="submit" name="login-submit" class="form-control customLoginBtn" value="Login">
+                    </div><!--End Submit-form-group-->
+                </div> <!--End Login-form-group-->
+            </div> <!--End panel-body-->
+        </div> <!--End panel-info-->
+    </div>
+}

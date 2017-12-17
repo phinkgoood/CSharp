@@ -1,0 +1,92 @@
+﻿@using SantaClauseVillage.Classes
+@{
+    ViewBag.Title = "DetailsOrder";
+}
+@model Order 
+
+@{
+    bool available = false;
+    using (Html.BeginForm("SaveOrder", "SantaClaus"))
+    {
+        @Html.AntiForgeryToken()
+        <table id="customTableDetails" class="table customTableOrder">
+            <thead class="customHeadTable">
+                <tr class="customHeadTable">
+                    <th class="customThHead">Order n. @Model.ID</th>
+                    <th class="customThHead"></th>
+                </tr>
+            </thead><!--End head Detail-->
+            <tbody>
+                <tr>
+                    <td class="text-success"><i class="fa fa-user"></i>Id:</td>
+                    <td>@Model.ID</td>
+                </tr><!--End Id Detail-->
+                <tr>
+                    <td class="text-success">Kid:</td>
+                    <td>@Model.Kid</td>
+                </tr><!--End Kid Detail-->
+                <tr>
+                    <td class="text-success">Request Date:</td>
+                    <td>@Model.RequestDate</td>
+                </tr><!--End RequestData Detail-->
+                <tr>
+                    <td class="text-success">Toys Request:</td>
+                    <td>
+                        @foreach (Toy toy in Model.Toys)
+                        {
+                            <ul class="list-group">
+                                <li class="list-group-item justify-content-between">
+                                    @toy.Name
+                                    @if (toy.Amount>0)
+                                    {
+                                        <span id="customAvailableSpan" class="badge badge-success" data-toggle="tooltip" data-placement="top" title="@toy.Amount pcs">Available</span>
+                                        available = true;
+                                    }
+                                    else
+                                    {
+                                        <span id="customNotAvailableSpan" class="badge badge-danger" data-toggle="tooltip" data-placement="top" title="@toy.Amount pcs">Not Available</span>
+                                        available = false;
+                                    }
+                                </li>
+                            </ul><!--End Toys list per Order-->
+                        }<!--End foreach all Toys per each Order-->
+                    </td>
+                </tr><!--End Toys Detail-->
+                <tr>
+                    <td class="text-success">Status:</td>
+                    <td>
+                        <div id="modelStatus">
+                            @Model.StatusType
+                        </div><!--End modelStatus-->
+                        @if (available == true)
+                        {
+                            <div id="radioChangeStatus">
+                                <div class="text-success">Change Order Status:</div>
+                                <select id="statusType" name="StatusType" class="btn btn-default btn-sm dropdown-toggle">
+                                    @foreach (var type in Enum.GetValues(typeof(StatusType)))
+                                    {
+                                        if (Model.StatusType.Equals(@type))
+                                        {
+                                            <option value="@type" selected="selected">@type</option>
+                                        }
+                                        else
+                                        {
+                                            <option value="@type">@type</option>
+                                        }
+                                    }
+                                </select><!--End select StatusType-->
+                                <input id="customInputSaveStatus" type="submit" value="Save" class="btn btn-success" />
+                                @Html.HiddenFor(model => model.ID)
+                            </div><!--End radioChangeStatus-->
+                        }<!--End ifAvailable-->                 
+                    </td>
+                </tr><!--End StatusType Detail-->
+            </tbody><!--End body Detail-->
+        </table><!--End table Detail-->
+
+        <div class="customBackButton">
+            @Html.ActionLink(" Back", "Index", "Home", new { @class = "btn btn-primary glyphicon glyphicon-circle-arrow-left" })
+        </div>
+    }
+}
+

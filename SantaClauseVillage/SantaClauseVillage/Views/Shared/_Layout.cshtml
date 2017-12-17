@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html>
+<html style="height:100%">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Applicazione Santa Clause</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body class="customBody">
+    <div class="navbar navbar-inverse navbar-fixed-top customNavbar">
+        <div class="container">
+            <div class="navbar-header customNavbarHeader">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <img src="~/Photo/The_Santa_Clause_Logo.png" id="santaClauseLogo"/>
+            </div><!--End navbar-header-->
+            <div id="customerTask" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    @if ((string)Session["Screenname"]=="SantaTheBest" || (string)Session["Screenname"]=="FabulousZiggy")
+                    {
+                        <li>@Html.ActionLink("Order List", "OrdersList", "SantaClaus")</li>
+                        <li>@Html.ActionLink("Warehouse", "ToysList", "Toys")</li>
+                    }                 
+                </ul>
+                @Html.Partial("_LoginPartial")
+            </div><!--End navbar-nav-->
+        </div><!--End container-->
+    </div><!--End navbar-top-->
+    <div class="renderBody">
+        @RenderBody()
+        <footer class="customFooter">
+            <p class="customPSCV">Santa Clause Village</p>
+            <p class="customPPF">Pekankatu - Finland</p>
+        </footer>
+    </div><!--End renderBodyClass-->
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

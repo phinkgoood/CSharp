@@ -1,0 +1,15 @@
+C:\Users\f.castellese\Documents\Visual Studio 2015\Projects\SantaClauseVillage\SantaClauseVillage.Classes\bin\Debug\SantaClauseVillage.Classes.dll
+C:\Users\f.castellese\Documents\Visual Studio 2015\Projects\SantaClauseVillage\SantaClauseVillage.Classes\bin\Debug\SantaClauseVillage.Classes.pdb
+C:\Users\f.castellese\Documents\Visual Studio 2015\Projects\SantaClauseVillage\SantaClauseVillage.Classes\bin\Debug\DnsClient.dll
+C:\Users\f.castellese\Documents\Visual Studio 2015\Projects\SantaClauseVillage\SantaClauseVillage.Classes\bin\Debug\MongoDB.Bson.dll
+C:\Users\f.castellese\Documents\Visual Studio 2015\Projects\SantaClauseVillage\SantaClauseVillage.Classes\bin\Debug\MongoDB.Driver.Core.dll
+C:\Users\f.castellese\Documents\Visual Studio 2015\Projects\SantaClauseVillage\SantaClauseVillage.Classes\bin\Debug\MongoDB.Driver.dll
+C:\Users\f.castellese\Documents\Visual Studio 2015\Projects\SantaClauseVillage\SantaClauseVillage.Classes\bin\Debug\System.Buffers.dll
+C:\Users\f.castellese\Documents\Visual Studio 2015\Projects\SantaClauseVillage\SantaClauseVillage.Classes\bin\Debug\System.Runtime.InteropServices.RuntimeInformation.dll
+C:\Users\f.castellese\Documents\Visual Studio 2015\Projects\SantaClauseVillage\SantaClauseVillage.Classes\bin\Debug\DnsClient.xml
+C:\Users\f.castellese\Documents\Visual Studio 2015\Projects\SantaClauseVillage\SantaClauseVillage.Classes\bin\Debug\MongoDB.Bson.xml
+C:\Users\f.castellese\Documents\Visual Studio 2015\Projects\SantaClauseVillage\SantaClauseVillage.Classes\bin\Debug\MongoDB.Driver.xml
+C:\Users\f.castellese\Documents\Visual Studio 2015\Projects\SantaClauseVillage\SantaClauseVillage.Classes\bin\Debug\MongoDB.Driver.Core.xml
+C:\Users\f.castellese\Documents\Visual Studio 2015\Projects\SantaClauseVillage\SantaClauseVillage.Classes\obj\Debug\SantaClauseVillage.Classes.csprojResolveAssemblyReference.cache
+C:\Users\f.castellese\Documents\Visual Studio 2015\Projects\SantaClauseVillage\SantaClauseVillage.Classes\obj\Debug\SantaClauseVillage.Classes.dll
+C:\Users\f.castellese\Documents\Visual Studio 2015\Projects\SantaClauseVillage\SantaClauseVillage.Classes\obj\Debug\SantaClauseVillage.Classes.pdb

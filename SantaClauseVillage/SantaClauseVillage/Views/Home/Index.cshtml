@@ -1,0 +1,12 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+@if ((string)Session["ID"] != null)
+{
+    <img src="~/Photo/christmasWhiteBalls.jpg"/>
+}
+else
+{
+    <img src="~/Photo/christmasBalls.jpg" style="height:100%; width:100%" />
+}

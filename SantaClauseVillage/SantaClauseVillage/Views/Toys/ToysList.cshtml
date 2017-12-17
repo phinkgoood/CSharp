@@ -1,0 +1,28 @@
+﻿@using SantaClauseVillage.Models
+@{
+    ViewBag.Title = "ToysList";
+}
+@model ToysModel
+
+@if ((string)Session["Screenname"] == "FabulousZiggy" || (string)Session["Screenname"] == "SantaTheBest")
+{
+    <div style="text-align:center">
+        <table id="customToyListTable" class="table customTableOrder">
+            <thead class="thead-inverse customHeadTable">
+                <tr class="customHeadTable">
+                    <th class="customThHead">Toy</th>
+                    <th class="customThHead">Stock Availability [pcs]</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var toy in Model.EntityList)
+                {
+                    <tr>
+                        <td>@toy.Name</td>
+                        <td>@toy.Amount</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}
