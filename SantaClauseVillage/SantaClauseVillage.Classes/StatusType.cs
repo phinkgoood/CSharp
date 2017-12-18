@@ -12,6 +12,4 @@ namespace SantaClauseVillage.Classes
         ReadyToSent,
         Sent
     }
-
-    //StatusType myStatus = (StatusType)1;
 }

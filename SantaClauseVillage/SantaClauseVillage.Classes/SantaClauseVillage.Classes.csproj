@@ -65,7 +65,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
     <Compile Include="IDataBase.cs" />
     <Compile Include="MongoConnection.cs" />
     <Compile Include="MongoDB.cs" />

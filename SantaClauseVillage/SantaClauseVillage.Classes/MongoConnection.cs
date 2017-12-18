@@ -38,7 +38,6 @@ namespace SantaClauseVillage.Classes
                         }
                     }
                 }
-
                 return instance;
             }
         }

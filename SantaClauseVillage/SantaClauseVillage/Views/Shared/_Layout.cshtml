@@ -23,7 +23,7 @@
                 <ul class="nav navbar-nav">
                     @if ((string)Session["Screenname"]=="SantaTheBest" || (string)Session["Screenname"]=="FabulousZiggy")
                     {
-                        <li>@Html.ActionLink("Order List", "OrdersList", "SantaClaus")</li>
+                        <li>@Html.ActionLink("Order List", "OrdersList", "Orders")</li>
                         <li>@Html.ActionLink("Warehouse", "ToysList", "Toys")</li>
                     }                 
                 </ul>

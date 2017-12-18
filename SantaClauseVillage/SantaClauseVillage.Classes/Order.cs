@@ -26,6 +26,5 @@ namespace SantaClauseVillage.Classes
         [BsonElement("requestDate")]
         [BsonDateTimeOptions(Kind = DateTimeKind.Local)]
         public DateTime RequestDate { get; set; }
-
     }
 }

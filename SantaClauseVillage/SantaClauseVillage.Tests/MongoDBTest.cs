@@ -9,20 +9,6 @@ using System.Threading.Tasks;
 
 namespace SantaClauseVillage.Tests
 {
-    /*  -Toy GetToyById(string id);
-        -Toy GetToyByName(string name);
-        -IEnumerable<Toy> GetAllToys();
-
-        -Order GetOrderById(string id);
-        -Order GetOrderByKid(string kid);
-        bool UpdateOrder(Order order);
-        -IEnumerable<Order> GetAllOrders();
-
-        -User GetUserById(string id);
-        -User GetUserByScreenname(string screenname);
-        -User GetUserByEmail(string email);
-        IEnumerable<User> GetAllUsers();
-    */
     [TestClass]
     public class IDataBaseTest
     {
@@ -110,8 +96,6 @@ namespace SantaClauseVillage.Tests
             Assert.IsInstanceOfType(result, typeof(IEnumerable<Toy>));
 
         }
-
-        /*Order method*/
 
         [TestMethod]
         public void GetOrderById_Should_Return_A_Order()

@@ -12,7 +12,6 @@ namespace SantaClauseVillage.Models
         {
             EntityList = entityList;
         }
-
         public List<User> EntityList { get; private set; }
     }
 }

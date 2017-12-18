@@ -87,7 +87,6 @@
     <Compile Include="Mocks\MongoConnectionMock.cs" />
     <Compile Include="MongoDBConfigTest.cs" />
     <Compile Include="MongoDBTest.cs" />
-    <Compile Include="UnitTest1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

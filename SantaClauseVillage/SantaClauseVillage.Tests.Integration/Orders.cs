@@ -11,12 +11,6 @@ using SantaClauseVillageDB = SantaClauseVillage.Classes.MongoDB;
 
 namespace SantaClauseVillage.Tests.Integration
 {
-    /* Order GetOrderById(string id);
-        Order GetOrderByKid(string kid);
-        bool UpdateOrder(Order order);
-        IEnumerable<Order> GetAllOrders();
-    */
-
     [TestClass]
     public class Orders
     {
@@ -61,8 +55,6 @@ namespace SantaClauseVillage.Tests.Integration
             order.StatusType = StatusType.ReadyToSent;
             Assert.IsTrue(db.UpdateOrder(order));
         }
-
-
 
         [TestMethod]
         public void GetAllOrders_Should_Return_A_List_Of_Orders()

@@ -21,6 +21,5 @@ namespace SantaClauseVillage.Classes
         User GetUserByScreenname(string screenname);
         User GetUserByEmail(string email);
         IEnumerable<User> GetAllUsers();
-
     }
 }

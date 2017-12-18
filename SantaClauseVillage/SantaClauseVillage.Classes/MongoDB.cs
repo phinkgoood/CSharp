@@ -64,7 +64,7 @@ namespace SantaClauseVillage.Classes
                     orderCollection.UpdateOne(filter, update);
                     return true;
                 }
-                catch (Exception)
+                catch (ArgumentNullException)
                 {
                     return false;
                 }

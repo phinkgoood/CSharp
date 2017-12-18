@@ -11,11 +11,6 @@ using SantaClauseVillageDB = SantaClauseVillage.Classes.MongoDB;
 
 namespace SantaClauseVillage.Tests.Integration
 {
-    /*  User GetUserById(string id);
-        User GetUserByScreenname(string screenname);
-        User GetUserByEmail(string email);
-        IEnumerable<User> GetAllUsers();
-    */
     [TestClass]
     public class Users
     {

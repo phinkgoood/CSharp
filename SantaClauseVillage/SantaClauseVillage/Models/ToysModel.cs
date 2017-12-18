@@ -9,6 +9,5 @@ namespace SantaClauseVillage.Models
     public class ToysModel
     {
         public List<Toy> EntityList { get; set; }
-
     } 
 }

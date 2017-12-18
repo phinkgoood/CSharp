@@ -20,7 +20,6 @@ namespace SantaClauseVillage.Classes
             {
                 hexStr += String.Format("{0:x2}", b);
             }
-
             return hexStr;
         }
     }

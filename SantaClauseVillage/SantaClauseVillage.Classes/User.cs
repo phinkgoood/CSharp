@@ -29,6 +29,5 @@ namespace SantaClauseVillage.Classes
 
         [BsonElement("password_clear_text")]
         public string PasswordClearText { get; set; }
-
     }
 }

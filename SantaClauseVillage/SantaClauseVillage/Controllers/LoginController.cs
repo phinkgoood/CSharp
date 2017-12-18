@@ -14,7 +14,6 @@ namespace SantaClauseVillage.Controllers
         // GET: Login
         public ActionResult Login()
         {
-            Debug.WriteLine("login()");
             return View();
         }
 
