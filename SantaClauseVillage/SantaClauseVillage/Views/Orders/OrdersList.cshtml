@@ -6,6 +6,7 @@
 
 @if ((string)Session["Screenname"] == "FabulousZiggy" || (string)Session["Screenname"] == "SantaTheBest")
 {
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
     <table class="table customTableOrder">
         <thead class="thead-inverse">
             <tr>
@@ -46,7 +47,17 @@
                     <td>@order.RequestDate.ToString("dd/MM/yyyy")</td>
                     @if ((string)Session["Screenname"] == "SantaTheBest")
                     {
-                        <td>@Html.DisplayName(Model.GetTotalPrice(order.Toys).ToString("F") + " €")</td>
+                        if (Model.GetTotalPrice(order.Toys) >= 1000000000)
+                        {
+                            <td>
+                                <p>@Html.DisplayName(((Model.GetTotalPrice(order.Toys))-1000000000).ToString("F") + " €")</p>
+                                <p style="color:red">Attention: Toy(s) not exist in collection toys or is empty or white space; Toy could also is empty or white space in collection order</p>
+                            </td>
+                        }
+                        else
+                        {
+                            <td>@Html.DisplayName(Model.GetTotalPrice(order.Toys).ToString("F") + " €")</td>
+                        }
                     }
                     else
                     {

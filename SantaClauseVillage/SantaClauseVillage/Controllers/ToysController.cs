@@ -17,10 +17,16 @@ namespace SantaClauseVillage.Controllers
             {
                 SantaClauseVillageMongoDB db = new SantaClauseVillageMongoDB();
                 var toys = db.GetAllToys();
-                Models.ToysModel model = new ToysModel();
-                model.EntityList = toys.ToList();
-                //model.instanceDB = db;
-                return View(model);
+                if(toys != null)
+                {
+                    Models.ToysModel model = new ToysModel();
+                    model.EntityList = toys.ToList();
+                    return View(model);
+                }
+                else
+                {
+                    return View();
+                }                
             }
             else
             {

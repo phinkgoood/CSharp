@@ -1,31 +1,16 @@
 ﻿@using Microsoft.AspNet.Identity
-@if (Request.IsAuthenticated)
-{
-    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
-    {
-    @Html.AntiForgeryToken()
 
+@if (Session["ID"] == null)
+{
     <ul class="nav navbar-nav navbar-right">
-        <li>
-            @Html.ActionLink("Salve " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
-        </li>
-        <li><a href="javascript:document.getElementById('logoutForm').submit()">Disconnetti</a></li>
+        <li>@Html.ActionLink("Login", "Login", "Login")</li>
     </ul>
-    }
 }
 else
 {
-    if (Session["ID"] == null)
-    {
-        <ul class="nav navbar-nav navbar-right">
-            <li>@Html.ActionLink("Login", "Login", "Login")</li>
-        </ul>
-    }
-    else
-    {
-        <ul class="nav navbar-nav navbar-right">
-            <li style= "color: #999999; padding: 15px">Bentornato @Session["ScreenName"]</li>
-            <li>@Html.ActionLink("Logout", "Logout", "Login")</li>
-        </ul>
-    }
+    <ul class="nav navbar-nav navbar-right">
+        <li style= "color: #999999; padding: 15px">Bentornato @Session["ScreenName"]</li>
+        <li>@Html.ActionLink("Logout", "Logout", "Login")</li>
+    </ul>
 }
+

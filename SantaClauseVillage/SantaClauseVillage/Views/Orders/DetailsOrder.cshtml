@@ -9,6 +9,7 @@
     using (Html.BeginForm("SaveOrder", "Orders"))
     {
         @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <table id="customTableDetails" class="table customTableOrder">
             <thead class="customHeadTable">
                 <tr class="customHeadTable">

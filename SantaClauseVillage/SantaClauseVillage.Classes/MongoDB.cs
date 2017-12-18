@@ -21,31 +21,120 @@ namespace SantaClauseVillage.Classes
         public IEnumerable<Order> GetAllOrders()
         {
             IMongoCollection<Order> orderCollection = database.GetCollection<Order>("orders");
-            return orderCollection.Find(new BsonDocument()).SortBy(t => t.RequestDate).ToList();
+            IEnumerable < Order > enumerOrders = orderCollection.Find(new BsonDocument()).SortBy(t => t.RequestDate).ToList();
+            {
+                if (enumerOrders != null)
+                {
+                    return enumerOrders;
+                }
+                else
+                {
+                    return null;
+                }
+            }
         }
 
         public IEnumerable<Toy> GetAllToys()
         {
             IMongoCollection<Toy> toyCollection = database.GetCollection<Toy>("toys");
-            return toyCollection.Find(new BsonDocument()).ToList();
+            IEnumerable < Toy > enumerToys = toyCollection.Find(new BsonDocument()).ToList();
+            if (enumerToys != null)
+            {
+                return enumerToys;
+            }
+            else
+            {
+                return null;
+            }
+            
         }
 
         public IEnumerable<User> GetAllUsers()
         {
             IMongoCollection<User> userCollection = database.GetCollection<User>("users");
-            return userCollection.Find(new BsonDocument()).ToList();
+            IEnumerable < User > enumerUsers = userCollection.Find(new BsonDocument()).ToList();
+            if (enumerUsers != null)
+            {
+                return enumerUsers;
+            }
+            else
+            {
+                return null;
+            }
         }
 
         public Order GetOrderById(string id)
         {
             IMongoCollection<Order> orderCollection = database.GetCollection<Order>("orders");
-            return orderCollection.Find(_=>_.ID == id).FirstOrDefault();
+            try
+            {
+                if (id == null)
+                {
+                    throw new ArgumentNullException();
+                }
+                else if (id == "" || id == " ")
+                {
+                    throw new ArgumentException();
+                }
+                Order order = orderCollection.Find(_ => _.ID == id).FirstOrDefault();
+                if (order != null)
+                {
+                    return order;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch (ArgumentNullException)
+            {
+                return null;
+            }
+            catch (ArgumentException)
+            {
+                return null;
+            }
+            catch (FormatException)
+            {
+                return null;
+            }
         }
 
         public Order GetOrderByKid(string kid)
         {
             IMongoCollection<Order> orderCollection = database.GetCollection<Order>("orders");
-            return orderCollection.Find(_ => _.Kid == kid).FirstOrDefault();
+            try
+            {
+                if (kid == null)
+                {
+                    throw new ArgumentNullException();
+                }
+                else if (kid == "" || kid == " ")
+                {
+                    throw new ArgumentException();
+                }
+                Order order = orderCollection.Find(_ => _.Kid == kid).FirstOrDefault();
+                if (order != null)
+                {
+                    return order;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch (ArgumentNullException)
+            {
+                return null;
+            }
+            catch (ArgumentException)
+            {
+                return null;
+            }
+            catch (FormatException)
+            {
+                return null;
+            }
         }
 
         public bool UpdateOrder(Order order)
@@ -54,17 +143,29 @@ namespace SantaClauseVillage.Classes
                 IMongoCollection<Order> orderCollection = database.GetCollection<Order>("orders");
                 var filter = Builders<Order>.Filter.Eq("_id", ObjectId.Parse(order.ID));
                 var update = Builders<Order>.Update
-                    .Set("status", order.StatusType);
-                if (order.ID == null)
-                {
-                    throw new ArgumentNullException();
-                }
+                    .Set("status", order.StatusType);                
                 try
                 {
+                    if (order.ID == null)
+                    {
+                        throw new ArgumentNullException();
+                    }
+                    else if (order.ID == "" || order.ID ==" ")
+                    {
+                        throw new ArgumentException();
+                    }
                     orderCollection.UpdateOne(filter, update);
                     return true;
                 }
                 catch (ArgumentNullException)
+                {
+                    return false;
+                }
+                catch (ArgumentException)
+                {
+                    return false;
+                }
+                catch (FormatException)
                 {
                     return false;
                 }
@@ -74,31 +175,186 @@ namespace SantaClauseVillage.Classes
         public Toy GetToyById(string id)
         {
             IMongoCollection<Toy> toyCollection = database.GetCollection<Toy>("toys");
-            return toyCollection.Find(_ => _.ID == id).FirstOrDefault();
+            try
+            {
+                if (id == null)
+                {
+                    throw new ArgumentNullException();
+                }
+                else if (id == "" || id == " ")
+                {
+                    throw new ArgumentException();
+                }
+                Toy toy = toyCollection.Find(_ => _.ID == id).FirstOrDefault();
+                if (toy != null)
+                {
+                    return toy;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch (ArgumentNullException)
+            {
+                return null;
+            }
+            catch (ArgumentException)
+            {
+                return null;
+            }
+            catch (FormatException)
+            {
+                return null;
+            }
         }
 
         public Toy GetToyByName(string name)
         {
             IMongoCollection<Toy> toyCollection = database.GetCollection<Toy>("toys");
-            return toyCollection.Find(_ => _.Name == name).FirstOrDefault();
+            try
+            {
+                if (name == null)
+                {
+                    throw new ArgumentNullException();
+                }
+                else if (name == "" || name == " ")
+                {
+                    throw new ArgumentException();
+                }
+                Toy toy = toyCollection.Find(_ => _.Name == name).FirstOrDefault();
+                if (toy != null)
+                {
+                    return toy;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch (ArgumentNullException)
+            {
+                return null;
+            }
+            catch (ArgumentException)
+            {
+                return null;
+            }
+            catch (FormatException)
+            {
+                return null;
+            }
         }
 
         public User GetUserById(string id)
         {
             IMongoCollection<User> userCollection = database.GetCollection<User>("users");
-            return userCollection.Find(_ => _.ID == id).FirstOrDefault();
+            try
+            {
+                if (id == null)
+                {
+                    throw new ArgumentNullException();
+                }
+                else if (id == "" || id == " ")
+                {
+                    throw new ArgumentException();
+                }
+                User user = userCollection.Find(_ => _.ID == id).FirstOrDefault();
+                if (user != null)
+                {
+                    return user;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch (ArgumentNullException)
+            {
+                return null;
+            }
+            catch (ArgumentException)
+            {
+                return null;
+            }
+            catch (FormatException)
+            {
+                return null;
+            }
         }
 
         public User GetUserByScreenname(string screenname)
         {
             IMongoCollection<User> userCollection = database.GetCollection<User>("users");
-            return userCollection.Find(_ => _.Screenname == screenname).FirstOrDefault();
+            try
+            {
+                if (screenname == null)
+                {
+                    throw new ArgumentNullException();
+                }
+                else if (screenname == "" || screenname == " ")
+                {
+                    throw new ArgumentException();
+                }
+                User user = userCollection.Find(_ => _.Screenname == screenname).FirstOrDefault();
+                if (user != null)
+                {
+                    return user;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch (ArgumentNullException)
+            {
+                return null;
+            }
+            catch (ArgumentException)
+            {
+                return null;
+            }
+            catch (FormatException)
+            {
+                return null;
+            }
         }
 
         public User GetUserByEmail(string email)
         {
             IMongoCollection<User> userCollection = database.GetCollection<User>("users");
-            return userCollection.Find(_ => _.Email == email).FirstOrDefault();
+            try
+            {
+                if (email == null)
+                {
+                    throw new ArgumentNullException();
+                }
+                else if (email == "" || email == " ")
+                {
+                    throw new ArgumentException();
+                }
+                User user = userCollection.Find(_ => _.Email == email).FirstOrDefault();
+                if (user != null)
+                {
+                    return user;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch (ArgumentNullException)
+            {
+                return null;
+            }
+            catch (ArgumentException)
+            {
+                return null;
+            }
+            catch (FormatException)
+            {
+                return null;
+            }
         }
     }
 }

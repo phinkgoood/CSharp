@@ -13,16 +13,27 @@ namespace SantaClauseVillage.Controllers
     public class OrdersController : Controller
     {
         // GET: SantaClaus
-        public ActionResult OrdersList()
+        public ActionResult OrdersList(bool? error)
         {
             if (Session["ID"] != null)
             {
+                if (error == true)
+                {
+                    ModelState.AddModelError("", "Id not exist!");
+                }
                 SantaClauseVillageMongoDB db = new SantaClauseVillageMongoDB();
                 var orders = db.GetAllOrders();
-                OrdersModels model = new OrdersModels();
-                model.EntityList = orders.ToList();
-                model.instanceDB = db;
-                return View(model);
+                if (orders != null)
+                {
+                    OrdersModels model = new OrdersModels();
+                    model.EntityList = orders.ToList();
+                    model.instanceDB = db;
+                    return View(model);
+                }
+                else
+                {
+                    return View();
+                }                
             }
             else
             {
@@ -30,24 +41,35 @@ namespace SantaClauseVillage.Controllers
             }
         }
 
-        public ActionResult DetailsOrder(string id)
+        public ActionResult DetailsOrder(string id, bool? error)
         {
             if (Session["ID"] != null)
             {
+                if (error == true)
+                {
+                    ModelState.AddModelError("", "Status Type not updated!");
+                }
                 SantaClauseVillageMongoDB db = new SantaClauseVillageMongoDB();
                 var order = db.GetOrderById(id);
-                Order model = new Order();
-                model.ID = order.ID;
-                model.Kid = order.Kid;
-                model.StatusType = order.StatusType;
-                List<Toy> ToysModel = new List<Toy>();
-                for (int i = 0; i < order.Toys.Count; i++)
+                if (order != null)
                 {
-                    ToysModel.Add(db.GetToyByName(order.Toys[i].Name));
+                    Order model = new Order();
+                    model.ID = order.ID;
+                    model.Kid = order.Kid;
+                    model.StatusType = order.StatusType;
+                    List<Toy> ToysModel = new List<Toy>();
+                    for (int i = 0; i < order.Toys.Count; i++)
+                    {
+                        ToysModel.Add(db.GetToyByName(order.Toys[i].Name));
+                    }
+                    model.RequestDate = order.RequestDate;
+                    model.Toys = ToysModel;
+                    return View(model);
                 }
-                model.RequestDate = order.RequestDate;
-                model.Toys = ToysModel;
-                return View(model);
+                else
+                {
+                    return RedirectToAction("OrdersList", new { error = true });
+                }                
             }
             else
             {
@@ -60,12 +82,26 @@ namespace SantaClauseVillage.Controllers
             bool result;
             SantaClauseVillageMongoDB db = new SantaClauseVillageMongoDB();
             Order order = db.GetOrderById(id);
-            result = db.UpdateOrder(new Order
+            if (order != null)
             {
-                ID = id,
-                StatusType = statusType
-            });
-            return RedirectToAction("OrdersList", new { result = result });
+                result = db.UpdateOrder(new Order
+                {
+                    ID = id,
+                    StatusType = statusType
+                });
+                if (result == true)
+                {
+                    return RedirectToAction("OrdersList", new { result = result });
+                }
+                else
+                {
+                    return RedirectToAction("DetailsOrder", new { error = true });
+                }
+            }
+            else
+            {
+                return RedirectToAction("OrderList", new { error = true });
+            }
         }
     }
 }

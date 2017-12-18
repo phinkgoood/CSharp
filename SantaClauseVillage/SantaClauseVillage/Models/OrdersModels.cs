@@ -17,7 +17,14 @@ namespace SantaClauseVillage.Models
             decimal totalCost = 0;
             foreach (Toy toy in toysList)
             {
-                totalCost += instanceDB.GetToyByName(toy.Name).Cost;
+                if (instanceDB.GetToyByName(toy.Name) != null)
+                {
+                    totalCost += instanceDB.GetToyByName(toy.Name).Cost;
+                }
+                else
+                {
+                    totalCost = 1000000000;
+                }                
             }
             return totalCost;
         }
